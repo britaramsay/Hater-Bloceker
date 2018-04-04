@@ -1,3 +1,7 @@
+.header{
+    background-color: black;   
+}
+
 #logo{
     border:20%;
 }
@@ -9,7 +13,7 @@
     
 }
 
-#MainContainer{
+#mainContainer{
     width: 80%;
     align-content: center;
     max-width: 80%;
