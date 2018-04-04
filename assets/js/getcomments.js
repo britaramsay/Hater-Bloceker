@@ -111,7 +111,6 @@ function handleSignoutClick(event) {
 }
 
 function getChannel() {
-
     // Request channel information
     // Parameter 'mine' : true get the currently authenticated users channel
     var request = gapi.client.request({
@@ -130,28 +129,23 @@ function getChannel() {
 
 
 function getPlaylist(playlistId){
+    $.ajax({
+        url: "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId="+playlistId+"&key=AIzaSyBqEJr9IauQFTzkj79rk0n0RMzDxY_VruE",
+        dataType: "jsonp",
+        success:
+            function (response) { 
+                console.log(response); 
+                $('.comment-list').empty();
+                // Save array of video responses
+                var videoIds = response.items;
 
-    // Request information about a playlist
-    // list specified number of videos with maxResults parameter
-    var request = gapi.client.youtube.playlistItems.list({
-        'method': 'GET',
-        'playlistId' : playlistId,
-        'part': 'snippet',
-        // User can choose number of videos to show
-        'maxResults' : 20
-    }).then(function(response) {
-        $('.comment-list').empty();
-        
-        // Save array of video responses
-        var videoIds = response.result.items;
-
-        videoIds.forEach(video => {
-          
-            // For each video in the playlist, save the videoId
-            var videoId = video.snippet.resourceId.videoId;
-            getVideo(videoId, 60);
-            // getComments(videoId);
-        });
+                videoIds.forEach(video => {
+                    // For each video in the playlist, save the videoId
+                    var videoId = video.snippet.resourceId.videoId;
+                    getVideo(videoId, 60);
+                    // getComments(videoId);
+                });
+            }
     });
 }
 
@@ -160,89 +154,77 @@ var numRows = 1;
 
 // May not need this request
 function getVideo(vidId, size){
-    var request = gapi.client.request({
-        'method': 'GET',
-        'path': '/youtube/v3/videos',
-        'params': {'part': 'snippet,contentDetails,statistics','id' : vidId}
-    }).then(function(response) {
-        numVideos++;
-        
-        console.log(response.result.items[0]); 
-        if ($('body').is('.dashboard-feed')) {
-            // var video = $('<div>');
+    $.ajax({
+        url: "https://www.googleapis.com/youtube/v3/videos?part=contentDetails%2Cstatistics%2Csnippet%2Cplayer&id=" + vidId + "&key=AIzaSyBqEJr9IauQFTzkj79rk0n0RMzDxY_VruE",
+        dataType: "jsonp",
 
-            if(numVideos == 1) {
-        console.log(numRows);
-                
-                var newRow = $('<div>');
-                    newRow.addClass('row')
-                          .attr('id', 'row-'+numRows);
-                var newCol = $('<div>');
-                    newCol.addClass('col-sm');
-        
-                var newVideo = $('<a>');
-                    newVideo.append('<span><img class="video" src=' + response.result.items[0].snippet.thumbnails.high.url + ' style="width:150px;box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.result.items[0].snippet.title + '</p></span>')
-                        .append('<br><br>')
-                        .addClass('video')       
-                        .attr('data-vidId', response.result.items[0].id)
-                        .attr('href', 'CommentDashboard.html');
-
-
-                newCol.append(newVideo);
-
-                $(newRow).append(newCol);
-
-                $(".videoColum1").append(newRow);
-
-                // numVideos++;
-            }
-            else if(numVideos > 1 && numVideos < 4) {
-                console.log(numVideos);
-                
-                var newCol = $('<div>');
-                    newCol.addClass('col-sm');
-        
-                var newVideo = $('<a>');
-                    newVideo.append('<span><img class="video" src=' + response.result.items[0].snippet.thumbnails.high.url + ' style="width:150px;box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.result.items[0].snippet.title + '</p></span>')
-                        .append('<br><br>')
-                        .addClass('video')       
-                        .attr('data-vidId', response.result.items[0].id)
-                        .attr('href', 'CommentDashboard.html');
-
-                newCol.append(newVideo);
-
-                $('#row-' + numRows).append(newCol);
-
-                $(".videoColum1").append($('#row-' + numRows));
-
-                if(numVideos == 3) {
-                    numRows++;
-                    numVideos = 0;
-                }
-                // numVideos++;
-            }
-        }
-        else if($('body').is('.dashboard-video')) {
-            console.log('hi');
-            var newVideo = $('<a>');
-            newVideo.append('<span><img class="video" src=' + response.result.items[0].snippet.thumbnails.high.url + ' style="width:80%;height:80%;box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.result.items[0].snippet.title + '</p></span>')
-                .append('<br><br>')
-                .addClass('video')       
-                .attr('data-vidId', response.result.items[0].id)
-                .attr('href', 'CommentDashboard.html');
-
-        $('#video-space').prepend(newVideo);
-        }
+        success: 
+        function(response) {
+            var videoThumbnail = response.items[0].snippet.thumbnails.high.url;
+            numVideos++;
             
-           
+            if ($('body').is('.dashboard-feed')) {
+                
+                if(numVideos == 1) {
+                
+                    var newRow = $('<div>');
+                        newRow.addClass('row')
+                            .attr('id', 'row-'+numRows);
+                    var newCol = $('<div>');
+                        newCol.addClass('col-sm');
+            
+                    var newVideo = $('<a>');
+                        newVideo.append('<span><img class="video" src=' + videoThumbnail + ' style="width:150px;box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.items[0].snippet.title + '</p></span>')
+                            .append('<br><br>')
+                            .addClass('video')       
+                            .attr('data-vidId', response.items[0].id)
+                            .attr('href', 'comment-dashboard.html');
 
-            // video.append('<span><img class="video-img" src=' + response.result.items[0].snippet.thumbnails.high.url + ' style="width:'+size+'px;box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.result.items[0].snippet.title + '</p></span>')
-            //      .append('<br><br>')
-            //      .addClass('video-main')       
-            //      .attr('data-vidId', response.result.items[0].id);
-        
-        // Append video
-        // $('.image-overlay').prepend(video);
+
+                        newCol.append(newVideo);
+
+                        $(newRow).append(newCol);
+
+                        $(".videoColum1").append(newRow);
+
+                }
+                else if(numVideos > 1 && numVideos < 4) {
+                    console.log(numVideos);
+                    
+                    var newCol = $('<div>');
+                        newCol.addClass('col-sm');
+            
+                    var newVideo = $('<a>');
+                        newVideo.append('<span><img class="video" src=' + videoThumbnail + ' style="width:150px;box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.items[0].snippet.title + '</p></span>')
+                            .append('<br><br>')
+                            .addClass('video')       
+                            .attr('data-vidId', response.items[0].id)
+                            .attr('href', 'comment-dashboard.html');
+
+                    newCol.append(newVideo);
+
+                    $('#row-' + numRows).append(newCol);
+
+                    $(".videoColum1").append($('#row-' + numRows));
+
+                    if(numVideos == 3) {
+                        numRows++;
+                        numVideos = 0;
+                    }
+                }
+            }
+            else if($('body').is('.dashboard-video')) {
+                console.log('hi');
+                var newVideo = $('<a>');
+                newVideo.append('<span><img class="video" src=' + videoThumbnail + ' style="width:80%;height:80%;box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.items[0].snippet.title + '</p></span>')
+                    .append('<br><br>')
+                    .addClass('video')       
+                    .attr('data-vidId', response.items[0].id)
+                    .attr('href', 'comment-dashboard.html');
+
+            $('#video-space').prepend(newVideo);
+            }
+        }
     });
 }
 
@@ -256,102 +238,113 @@ $(document).on('click', '.video', function() {
 
 // Get comments from the video specified in videoId
 function getComments(vidId){
-    var request = gapi.client.request({
-        'method': 'GET',
-        'path': '/youtube/v3/commentThreads',
-        'params': {'part': 'snippet','videoId' : vidId, 'maxResults': 20},
-        
-    }).then(function(response) {
+    $.ajax({                                  
+        url: "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&maxResults="+30+"&videoId=" + vidId + "&key=AIzaSyBqEJr9IauQFTzkj79rk0n0RMzDxY_VruE",
+        dataType: "jsonp",
 
-        var commentIds = response.result.items;
-        // Set number of comments
-        $('#numComments').text(commentIds.length);
-
-        commentIds.forEach(comment => {
-            // Get individial comment for display or deletion
-            getComment(comment.id);
-        });
+        success: 
+        function(response) {
+            console.log(response);
+            var commentIds = response.items;
+            // Set number of comments
+            $('#numComments').text(commentIds.length);
+    
+            commentIds.forEach(comment => {
+                // Get individial comment for display or deletion
+                getComment(comment.id);
+            });
+        }
     });
 }
 
 function getComment(commentId){
-    var request = gapi.client.request({
-        'method': 'GET',
-        'path': '/youtube/v3/comments',
-        'params': {'id':commentId, 'part': 'snippet'},
-        
-    }).then(function(response) {
-        // Comment info variables
-        var userImg = response.result.items[0].snippet.authorProfileImageUrl;
-        var author = response.result.items[0].snippet.authorDisplayName;
-        var commentText = response.result.items[0].snippet.textDisplay; 
-        // Current number of comments
-        var numComments = $('#numComments').text();
-        // If delete is true and comment is checked for delete
-        if(deleteComments == 1 && $('[comment="'+commentId+'"]').prop('checked')) {
-            
-            // If the comment was displayed, remove it from view
-            if($('#' + commentId).length)
-                $('#' + commentId).remove();
-            // Delete the comment
-            setModerationStatus(commentId);
-            
-            // Update number of comments
-            $('#numComments').text(numComments - 1);
-        }
-        // If delete is not true or the comment is set to be deleted
-        else {
-            // If comment is already displayed, remove it so it does not duplicate
-            var datePosted = moment(response.result.items[0].snippet.publishedAt).format('MMM Do YY, h:mm a');
 
-            if($('#' + commentId).length)
-                $('#' + commentId).remove();
+    $.ajax({                                  
+        url: "https://www.googleapis.com/youtube/v3/comments?part=snippet&commentId=" + commentId + "&key=AIzaSyBqEJr9IauQFTzkj79rk0n0RMzDxY_VruE",
+        dataType: "jsonp",
 
-            var listItem = $("<li>");
-                listItem.addClass('media')
-                        .attr('id', commentId);
-
-            var commenterImage = $('<div>');
-                commenterImage.addClass('media-left')
-                            .html('<a href=' +  response.result.items[0].snippet.authorChannelUrl + '><img src=' + userImg + ' alt=""></a>');
-            
-            var checkBox = $('<input>');
-                checkBox.addClass('check-box')
-                    .attr('type', 'checkbox')
-                    .html('<br><span class="checkmark"></span>')
-                    .attr('comment', commentId);
-
-                commenterImage.append(checkBox);
-                listItem.append(commenterImage);
-
-            var mediaBody = $('<div>');
-                mediaBody.addClass('media-body')
-                        .attr('text', commentText);
-
-            var mediaHeading = $('<div>');
-                mediaHeading.addClass('media-heading')
-                            .append('<a href=' + response.result.items[0].snippet.authorChannelUrl + ' class="text-semibold">' + author + '</a>')
-                            // Use library to get how long ago they posted it
-                            // Order comments by data send
-                            .append('<span class="timestamp"> '+datePosted+'</span>');
-                            
-                mediaBody.append(mediaHeading)
-                        .append('<p class="comment-text">' + commentText + '</p>');
-            
-            var commentControls = $('<div>');
-                commentControls.addClass('comment-controls')
-                                .append(response.result.items[0].snippet.likeCount + ' ' + '<span class="glyphicon glyphicon-thumbs-up"></span>');
+        success: 
+        function(response) {
+            var request = gapi.client.request({
+                'method': 'GET',
+                'path': '/youtube/v3/comments',
+                'params': {'id':commentId, 'part': 'snippet'},
                 
-                mediaBody.append(commentControls);
-
-                listItem.append(mediaBody);
-
-            $('.comment-list').prepend(listItem);
-            // Call function to score this comments sentiment
-            initGapi(commentText, commentId);
-
+            }).then(function(response) {
+                console.log(response);
+                // Comment info variables
+                var userImg = response.result.items[0].snippet.authorProfileImageUrl;
+                var author = response.result.items[0].snippet.authorDisplayName;
+                var commentText = response.result.items[0].snippet.textDisplay; 
+                // Current number of comments
+                var numComments = $('#numComments').text();
+                // If delete is true and comment is checked for delete
+                if(deleteComments == 1 && $('[comment="'+commentId+'"]').prop('checked')) {
+                    
+                    // If the comment was displayed, remove it from view
+                    if($('#' + commentId).length)
+                        $('#' + commentId).remove();
+                    // Delete the comment
+                    setModerationStatus(commentId);
+                    
+                    // Update number of comments
+                    $('#numComments').text(numComments - 1);
+                }
+                // If delete is not true or the comment is set to be deleted
+                else {
+                    // If comment is already displayed, remove it so it does not duplicate
+                    var datePosted = moment(response.result.items[0].snippet.publishedAt).format('MMM Do YY, h:mm a');
+        
+                    if($('#' + commentId).length)
+                        $('#' + commentId).remove();
+        
+                    var listItem = $("<li>");
+                        listItem.addClass('media')
+                                .attr('id', commentId);
+        
+                    var commenterImage = $('<div>');
+                        commenterImage.addClass('media-left')
+                                    .html('<a href=' +  response.result.items[0].snippet.authorChannelUrl + '><img src=' + userImg + ' alt=""></a>');
+                    
+                    var checkBox = $('<input>');
+                        checkBox.addClass('check-box')
+                            .attr('type', 'checkbox')
+                            .html('<br><span class="checkmark"></span>')
+                            .attr('comment', commentId);
+        
+                        commenterImage.append(checkBox);
+                        listItem.append(commenterImage);
+        
+                    var mediaBody = $('<div>');
+                        mediaBody.addClass('media-body')
+                                .attr('text', commentText);
+        
+                    var mediaHeading = $('<div>');
+                        mediaHeading.addClass('media-heading')
+                                    .append('<a href=' + response.result.items[0].snippet.authorChannelUrl + ' class="text-semibold">' + author + '</a>')
+                                    // Use library to get how long ago they posted it
+                                    // Order comments by data send
+                                    .append('<span class="timestamp"> '+datePosted+'</span>');
+                                    
+                        mediaBody.append(mediaHeading)
+                                .append('<p class="comment-text">' + commentText + '</p>');
+                    
+                    var commentControls = $('<div>');
+                        commentControls.addClass('comment-controls')
+                                        .append(response.result.items[0].snippet.likeCount + ' ' + '<span class="glyphicon glyphicon-thumbs-up"></span>');
+                        
+                        mediaBody.append(commentControls);
+        
+                        listItem.append(mediaBody);
+        
+                    $('.comment-list').prepend(listItem);
+                    // Call function to score this comments sentiment
+                    initGapi(commentText, commentId);
+        
+                }
+            
+            });
         }
-    
     });
 }
 // Sets the moderation status of a comment as rejected
