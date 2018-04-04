@@ -5,7 +5,7 @@
 */
 
 // Client ID from the Developer Console
-var CLIENT_ID = '523678269215-p0ja18cn4qk6htkeh576j43lptlmqbds.apps.googleusercontent.com';
+var CLIENT_ID = '523678269215-iivh2hbarihnbbnnc86leh2nkl78ti6c.apps.googleusercontent.com';
 
 // Array of API discovery doc URLs for APIs used by the quickstart
 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest", "https://language.googleapis.com/$discovery/rest?version=v1"];
