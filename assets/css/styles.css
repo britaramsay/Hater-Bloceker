@@ -1,5 +1,6 @@
 .header{
-    background-color: black;   
+    background-color: black;  
+    height: 30px; 
 }
 
 #logo{
@@ -7,9 +8,9 @@
 }
 
 .header{
-    height: 50px;
+    height: 30px;
     background-color: #def2f1;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
     
 }
 
@@ -35,16 +36,27 @@
 
 .video {
     border-radius: 15px;
+    width: 30vh;
+    /* position: absolute; */
+    /* left: 5%;
+    top: 5%; */
 }
 
+.videoTitle {
+    /* position: absolute; */
+    /* top: -80%; */
+}
+/* Need media queries */
 .col-sm{
+    /* position: relative; */
     text-align: center;
+    align-content: center;
     border-radius: 25px;
     border: 2px solid #192428;
     background: #3aafa9;
     padding: 10px; 
-    width: 150px;
-    height: 170px;
+    width: 15vh;
+    height: 30vh;
     margin-bottom: 3px;
 }
 
@@ -127,4 +139,8 @@
     margin-left: 15px;
     margin-bottom: 15px;
     float: left;
+}
+
+.footer {
+    margin-top: 5%;
 }
