@@ -138,11 +138,11 @@ function getPlaylist(playlistId){
                 $('.comment-list').empty();
                 // Save array of video responses
                 var videoIds = response.items;
-
+                console.log(videoIds);
                 videoIds.forEach(video => {
                     // For each video in the playlist, save the videoId
                     var videoId = video.snippet.resourceId.videoId;
-                    getVideo(videoId, 60);
+                    getVideo(videoId, videoIds.length);
                     // getComments(videoId);
                 });
             }
@@ -153,7 +153,7 @@ var numVideos = 0;
 var numRows = 1;
 
 // May not need this request
-function getVideo(vidId, size){
+function getVideo(vidId, totVideos){
     $.ajax({
         url: "https://www.googleapis.com/youtube/v3/videos?part=contentDetails%2Cstatistics%2Csnippet%2Cplayer&id=" + vidId + "&key=AIzaSyBqEJr9IauQFTzkj79rk0n0RMzDxY_VruE",
         dataType: "jsonp",
@@ -164,7 +164,9 @@ function getVideo(vidId, size){
             numVideos++;
             
             if ($('body').is('.dashboard-feed')) {
+                console.log('total: '+totVideos+":::?"+(3*(numRows-1)+numVideos));
                 
+                // if(numRows*numVideos == num)
                 if(numVideos == 1) {
                 
                     var newRow = $('<div>');
@@ -212,9 +214,19 @@ function getVideo(vidId, size){
                         numVideos = 0;
                     }
                 }
+                if(totVideos == (3*(numRows-1)+numVideos)) {
+                    var divsLeft = 3 - (totVideos%3);
+                    for(var i = divsLeft; i > 0; i--) {
+                        var newCol = $('<div>');
+                            newCol.addClass('col');
+
+                        $('#row-' + numRows).append(newCol);
+
+                        $(".videoColum1").append($('#row-' + numRows));
+                    }
+                }
             }
             else if($('body').is('.dashboard-video')) {
-                console.log('hi');
                 var newVideo = $('<a>');
                 newVideo.append('<span><img class="video" src=' + videoThumbnail + ' style="width:80%;height:80%;box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.items[0].snippet.title + '</p></span>')
                     .append('<br><br>')
