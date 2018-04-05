@@ -176,7 +176,7 @@ function getVideo(vidId, totVideos){
                         newCol.addClass('col-sm');
             
                     var newVideo = $('<a>');
-                        newVideo.append('<span><img class="video" src=' + videoThumbnail + ' style="width:150px;box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.items[0].snippet.title + '</p></span>')
+                        newVideo.append('<span><img class="video" src=' + videoThumbnail + ' style="box-shadow:0px 0px 0px black;"/><p class="videoTitle" style="color:black;">' + response.items[0].snippet.title + '</p></span>')
                             .append('<br><br>')
                             .addClass('video')       
                             .attr('data-vidId', response.items[0].id)
@@ -197,7 +197,7 @@ function getVideo(vidId, totVideos){
                         newCol.addClass('col-sm');
             
                     var newVideo = $('<a>');
-                        newVideo.append('<span><img class="video" src=' + videoThumbnail + ' style="width:150px;box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.items[0].snippet.title + '</p></span>')
+                        newVideo.append('<span><img class="video" src=' + videoThumbnail + ' style="box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.items[0].snippet.title + '</p></span>')
                             .append('<br><br>')
                             .addClass('video')       
                             .attr('data-vidId', response.items[0].id)
@@ -233,6 +233,8 @@ function getVideo(vidId, totVideos){
                     .addClass('video')       
                     .attr('data-vidId', response.items[0].id)
                     .attr('href', 'comment-dashboard.html');
+                
+                $('.goToYoutube').attr('href', 'https://www.youtube.com/watch?v='+response.items[0].id);
 
             $('#video-space').prepend(newVideo);
             }
