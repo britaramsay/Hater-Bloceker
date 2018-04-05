@@ -1,1 +1,1 @@
-# Hater-Bloceker
+# Hater-Blocker
