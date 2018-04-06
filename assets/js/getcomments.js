@@ -19,6 +19,21 @@ var dashboardButton = document.getElementById('dashboard-btn');
 
 var deleteComments = 0;
 var currVideo;
+
+
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyB3fHaaUH8mhPVr0kDcwYxFKKSTqudXKjM",
+    // authDomain: "test-app-1b4d5.firebaseapp.com",
+    databaseURL: "https://test-app-1b4d5.firebaseio.com",
+    projectId: "test-app-1b4d5",
+    storageBucket: "test-app-1b4d5.appspot.com",
+    messagingSenderId: "523678269215"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
 /*
  *  On load, called to load the auth2 library and API client library.
  */
@@ -41,7 +56,10 @@ function initClient() {
         scope: SCOPES
     }).then(function () {
         // Listen for sign-in state changes.
-        console.log(gapi.auth2.getAuthInstance().currentUser.get());
+        console.log(gapi.auth2.getAuthInstance().currentUser.get().w3.U3);
+        database.ref('/user').set({
+            user: gapi.auth2.getAuthInstance().currentUser.get().w3.U3
+        });
         
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
@@ -67,13 +85,16 @@ function initClient() {
             // authorizeButton.onclick = handleAuthClick;
             signoutButton.onclick = handleSignoutClick;
             // Get current video id from local storage
-            currVideo = localStorage.getItem("currVideo");
-            // Get current video, call with a greater width
-            getVideo(currVideo, 380);
-            // Empty comment list div
-            $('.comment-list').empty();
-            // Get comments on current video
-            getComments(currVideo);
+            database.ref('/video/').once('value', function(snapshot) {
+                currVideo = snapshot.val().currentVideo;
+                 // Get current video, call with a greater width
+                getVideo(currVideo, 380);
+                // Empty comment list div
+                $('.comment-list').empty();
+                // Get comments on current video
+                getComments(currVideo);
+            });
+           
            
         }
     });
@@ -255,6 +276,10 @@ $(document).on('click', '.video', function() {
     if($(this).data('vidid') != undefined) {
         // Save video id clicked to get when page changes
         localStorage.setItem("currVideo",$(this).data('vidid'));
+        database.ref('/video').set({
+            currentVideo: $(this).data('vidid')
+        })
+        
     }
 })
 
