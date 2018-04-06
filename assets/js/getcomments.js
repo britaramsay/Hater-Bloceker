@@ -56,10 +56,8 @@ function initClient() {
         scope: SCOPES
     }).then(function () {
         // Listen for sign-in state changes.
-        console.log(gapi.auth2.getAuthInstance().currentUser.get().w3.U3);
-        database.ref('/user').set({
-            user: gapi.auth2.getAuthInstance().currentUser.get().w3.U3
-        });
+        // console.log(gapi.auth2.getAuthInstance().currentUser.get().w3.U3);
+        
         
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
@@ -79,6 +77,9 @@ function initClient() {
             // window.location.href = "dashboard-feed-post.html";
         }
         else if ($('body').is('.dashboard-feed')) {
+            database.ref('/user').set({
+                user: gapi.auth2.getAuthInstance().currentUser.get().w3.U3
+            });
             getChannel();
         }
         else if ($('body').is('.dashboard-video')) {
