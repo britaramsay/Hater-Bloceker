@@ -212,7 +212,7 @@ function getVideo(vidId, totVideos){
                         newVideo.append('<span><img class="img-fluid" src=' + videoThumbnail + ' style="box-shadow:0px 0px 0px black;"/><p class="videoTitle" style="color:black;">' + response.items[0].snippet.title + '</p></span>')
                             .addClass('video')       
                             .attr('data-vidId', response.items[0].id)
-                            .attr('href', 'comment-dashboard.html');
+                            .attr('href', 'CommentDashboard.html');
 
 
                         newCol.append(newVideo);
@@ -231,7 +231,7 @@ function getVideo(vidId, totVideos){
                         newVideo.append('<span><img class="img-fluid" src=' + videoThumbnail + ' style="box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.items[0].snippet.title + '</p></span>')
                             .addClass('video')       
                             .attr('data-vidId', response.items[0].id)
-                            .attr('href', 'comment-dashboard.html');
+                            .attr('href', 'CommentDashboard.html');
 
                     newCol.append(newVideo);
 
@@ -262,7 +262,7 @@ function getVideo(vidId, totVideos){
                     .append('<br><br>')
                     .addClass('video')       
                     .attr('data-vidId', response.items[0].id)
-                    .attr('href', 'comment-dashboard.html');
+                    .attr('href', 'CommentDashboard.html');
                 
                 $('.goToYoutube').attr('href', 'https://www.youtube.com/watch?v='+response.items[0].id);
 
