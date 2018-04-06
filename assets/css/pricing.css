@@ -1,0 +1,248 @@
+@media (max-width: 20000px){
+    #value{
+        padding: indigo;
+        border: indigo;
+    }
+   
+    .card{
+        border: 40px;
+        padding: 5px;
+        margin: 10px;
+        text-align: center;
+
+    }
+	html {
+		font-size: 14px;
+    }
+    .gb-container-1{
+       border-bottom: 20px;
+       padding-top: 10px;
+       top:150px;
+       position: relative;
+    }
+	#logo{
+		margin-top: -21px;
+    }
+    .gb-section{
+        align-content: center;
+        text-align: center;
+    }
+	#ho_w{
+		align-content: center;
+		text-align: center;
+		margin-top: 80px;
+	}
+	#login{
+			left: 40%;
+			color: #17242a;
+			top: -10px;
+			position: relative;
+	}
+	a {
+		margin-right: 10px;
+		margin-left: 10px;
+		display: inline;
+		float: left;
+	}
+
+	p{
+		font-family: 'Poppins', sans-serif;
+		
+	}
+	h1{
+		font-family: 'Poppins', sans-serif;
+		font-size: 30px;
+		color: #17242a;
+	}
+	h2{
+		font-family: 'Poppins', sans-serif;
+		font-size: 20px;
+	}
+	h6{
+		font-family: 'Poppins', sans-serif;
+		font-size: 14px;
+		color: white;
+
+	}
+	#phone{
+		position: relative;
+		right: 400px;
+		top: 1px;
+	}
+	#green{
+		color: #3aafa9;
+		background-color: #3aafa9;
+	}
+	.card{
+		border-radius: 10px;
+		box-shadow: 0px 1px 1px grey;
+	}
+	.material-icons{
+		align-content: center;
+		text-align: center;
+		size: 40%;
+	}
+	.footercontainer{
+		background-color: #3aafa9;
+		color: rgb(255, 255, 255);
+		margin-top: 60px;
+		height: 500px;
+		background-size: cover;
+		background-position: left bottom;
+		align-content: center;
+		text-align: center;
+		
+	}
+}
+
+@media (max-width: 768px) {
+	html {
+		font-size: 16px;
+	}
+
+h1{
+	font-size: 30px;
+	color: #17242a;
+}
+
+}
+.btn-outline-success {
+    color: white;
+    background-color: transparent;
+    background-image: none;
+    border-color: white;
+}
+.text-dark {
+    color: white !important;
+}
+.btn-outline-primary {
+	left: 2px;
+    color: #f8f9fa;
+    background-color: #17242a;
+    border-color: #e9ecef;
+}
+.gb-container {
+	max-width: 960px;
+}
+.bg-white {
+	background-color: #3aafa9 !important;
+  }
+
+.gb-pricing-header {
+	max-width: 700px;
+	background-color: white;
+}
+
+.card-deck .card {
+	min-width: 220px;
+}
+
+.gb-border-top {
+	border-top: 1px solid white;
+}
+
+.gb-border-bottom {
+	border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+.gb-box-shadow {
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 0.25rem 0.75rem;
+}
+
+.gb-section {
+	background-color: rgb(32, 32, 32);
+	color: white;
+	margin-top: -17px;
+	height: 500px;
+	background-image: url("https://lh3.google.com/u/0/d/1DcoM2n8sz-PstEWDYc5tnSWGbkDuzqd-=w1920-h868-iv1");
+	background-size: cover;
+	background-position: left bottom;
+	border-bottom: 20px;
+    border-bottom-color: white;
+    align-content: center;
+}
+
+.gb-container-1 {
+	height: 100%;
+	padding-top: 0px;
+}
+
+.gb-container-2 {
+	padding-bottom: 24px;
+	padding-top: 60px;
+}
+
+.gb-row {
+	margin-top: 16px;
+	margin-bottom: 10px;
+}
+
+.card img {
+	width: 128px;
+	margin-left: auto;
+	margin-right: auto;
+	height: auto !important;
+}
+
+.gb-display-4 {
+	letter-spacing: 5px;
+	font-weight: 400;
+	font-family: "Droid Sans", sans-serif;
+}
+
+.gb-btn {
+	border-radius: 100px;
+}
+
+.gb-div-block {
+	width: 500px;
+	background-color: rgb(243, 243, 243);
+	padding: 20px;
+}
+
+.gb-col-sm-10 {
+	text-align: center;
+	width: 100%;
+}
+
+.gb-form-group {
+	width: 100%;
+}
+
+.gb-container-3 {
+	width: 500px;
+	bottom: 25px;
+}
+
+
+@media only screen and (max-width: 500px) {
+	.gb-container-1 {
+		padding-top: 30px;
+	}
+	.gb-container-1 h1 {
+		font-size: 36px;
+		padding-bottom: 5px;
+	}
+	.gb-container-3 {
+		width: 300px;
+	}
+	#login{
+		text-align: center;
+		color: white;
+		left: 0%;
+	}
+	#ho_w{
+		color:#17242a;
+	}
+}
+
+.gb-section-1 {
+	background-color: rgb(14, 0, 0);
+	color: rgb(255, 255, 255);
+	height: 350px;
+}
+
+.gb-col-12 {
+	
+	margin-bottom: 5px;
+}
