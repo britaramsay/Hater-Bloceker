@@ -13,7 +13,7 @@ var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/youtube/v3/r
 // Authorization scopes required by the API. 
 var SCOPES = 'https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/cloud-language';
 
-var authorizeButton = document.getElementById('signup-btn');
+var authorizeButton = document.getElementById('login-btn');
 var signoutButton = document.getElementById('signout-btn');
 var dashboardButton = document.getElementById('dashboard-btn');
 
@@ -47,7 +47,17 @@ function initClient() {
 
         if($('body').is('.landing')) {
             authorizeButton.onclick = handleAuthClick;
-            // signoutButton.onclick = handleSignoutClick;
+            signoutButton.onclick = handleSignoutClick;
+            if(gapi.auth2.getAuthInstance().currentUser.get().El == null) {
+                authorizeButton.style.display = 'inline';
+                signoutButton.style.display = 'none';
+                dashboardButton.style.display = 'none';
+            }
+            else {
+                authorizeButton.style.display = 'none';
+                signoutButton.style.display = 'inline';
+                dashboardButton.style.display = 'inline';
+            }
             // window.location.href = "dashboard-feed-post.html";
         }
         else if ($('body').is('.dashboard-feed')) {
@@ -87,11 +97,13 @@ function initClient() {
 // Login button isn't implemented with the apis yet
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
-        // authorizeButton.style.display = 'block';
-        // signoutButton.style.display = 'block';
+        authorizeButton.style.display = 'none';
+        signoutButton.style.display = 'inline';
+        dashboardButton.style.display = 'inline';
     } else {
-        // authorizeButton.style.display = 'block';
-        // signoutButton.style.display = 'none';
+        authorizeButton.style.display = 'inline';
+        signoutButton.style.display = 'none';
+        dashboardButton.style.display = 'none';
     }
 }
 
@@ -164,7 +176,6 @@ function getVideo(vidId, totVideos){
             numVideos++;
             
             if ($('body').is('.dashboard-feed')) {
-                console.log('total: '+totVideos+":::?"+(3*(numRows-1)+numVideos));
                 
                 // if(numRows*numVideos == num)
                 if(numVideos == 1) {
@@ -176,8 +187,7 @@ function getVideo(vidId, totVideos){
                         newCol.addClass('col-sm');
             
                     var newVideo = $('<a>');
-                        newVideo.append('<span><img class="video" src=' + videoThumbnail + ' style="box-shadow:0px 0px 0px black;"/><p class="videoTitle" style="color:black;">' + response.items[0].snippet.title + '</p></span>')
-                            .append('<br><br>')
+                        newVideo.append('<span><img class="img-fluid" src=' + videoThumbnail + ' style="box-shadow:0px 0px 0px black;"/><p class="videoTitle" style="color:black;">' + response.items[0].snippet.title + '</p></span>')
                             .addClass('video')       
                             .attr('data-vidId', response.items[0].id)
                             .attr('href', 'comment-dashboard.html');
@@ -191,14 +201,12 @@ function getVideo(vidId, totVideos){
 
                 }
                 else if(numVideos > 1 && numVideos < 4) {
-                    console.log(numVideos);
                     
                     var newCol = $('<div>');
                         newCol.addClass('col-sm');
             
                     var newVideo = $('<a>');
-                        newVideo.append('<span><img class="video" src=' + videoThumbnail + ' style="box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.items[0].snippet.title + '</p></span>')
-                            .append('<br><br>')
+                        newVideo.append('<span><img class="img-fluid" src=' + videoThumbnail + ' style="box-shadow:0px 0px 0px black;"/><p style="color:black;">' + response.items[0].snippet.title + '</p></span>')
                             .addClass('video')       
                             .attr('data-vidId', response.items[0].id)
                             .attr('href', 'comment-dashboard.html');

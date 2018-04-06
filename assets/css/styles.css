@@ -1,3 +1,39 @@
+#video-space{
+    text-align: center;
+}
+
+.video {
+    border-radius: 15px;
+    width: 30vh;
+    /* position: absolute; */
+    /* left: 5%;
+    top: 5%; */
+}
+
+#signout-btn {
+    background-color: #3aafa9;
+    margin-right: 5px;
+    /* display: none; */
+}
+
+#login-btn {
+    margin-right: 5px;
+    background-color: #3aafa9;
+}
+
+#dashboard-btn {
+    background-color: #3aafa9;
+    text-decoration: none;
+    color: black;
+    /* display: none; */
+}
+
+.footer{
+   
+    background-color: #def2f1; 
+       
+} 
+
 #logo{
     border:20%;
 }
@@ -5,7 +41,7 @@
 .header{
     height: 50px;
     background-color: #def2f1;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
     
 }
 
@@ -21,6 +57,7 @@
     align-content: center;
     max-width: 80%;
     margin: auto;
+    text-align: center;
 }
 
 
@@ -31,12 +68,86 @@
     padding: 20px; 
     width: 150px;
     height: 150px;
+    text-align: center;
+    align-content: center;
+    margin-bottom: 3px;
+    height: auto;
+}
+
+.col-sm:nth-child(3n-2), .col-sm:last-child{
+    margin-right: 3px;
+ }
+ 
+ .col-sm:nth-child(3n){
+     margin-left: 3px;
+ }
+ 
+ .col{
+     margin-left: 7px;
+ }
+ 
+.media-body {
+    background-color: rgb(243, 243, 243);
+    /* width: 100%; */
+    color: black;
+    box-shadow: 3px 3px 5px rgb(199, 199, 199);
+
+}
+
+.media-heading {
+    margin-right: 15px;
+
+}
+
+.text-semibold {
+    text-decoration: none;
+    float: left;
+    margin: 15px;
+
+}
+
+.timestamp {
+    float: left;
+    margin-top: 15px;
+
+}
+
+.comment-text {
+    clear: both;
+    margin-left: 15px;
+    float: left;
+}
+
+.media-left img{
+    border-radius: 50%;
+    margin-top: 15px;
+    margin-left: 15px;
+    clear: both;
+}
+.check-box {
+    float: right;
+    margin-right: 15px;
+    margin-top: 35px;
+    line-height: 20px;
+}
+.checkmark {
+    float: right;
+    clear: left;
+    /* margin-top: 15px;*/
+    margin-top: 35px; 
+
+}
+
+.comment-controls {
+    margin-left: 15px;
+    margin-bottom: 15px;
+    float: left;
 }
 
 .Footer{
    
     background-color: #def2f1; 
-       
+    margin-top: 15px;
 }
 
 #bottomlogo{
