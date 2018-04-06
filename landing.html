@@ -1,28 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> 
+<html>
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" href="assets/images/falicon.png" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <title>Home</title>
-</head>
+    <title>Hater Blocker </title>   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/phone.css">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="assets/js/index.js"></script>
+    <link id="fSg_Droid-Sans" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+    <link id="fSg_Open-Sans" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic"> </head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
-<body class='landing'>
-    <button class='btn' id='signup-btn'>Login</button>
+<body class="landing">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white gb-border-bottom gb-box-shadow">
+        <img id="logo" src="assets/Images/Logolight.png" width="100px" height="20px">
+        <ul>
+            <nav id="topnav" class="my-2 my-md-0 mr-md-3"> 
+                <a class="p-2 text-dark" href="landing.html"><h2>Home</h2></a>
+                <a class="p-2 text-dark" href="contact.html"><h2>Contact</h2></a>
+                <a class="p-2 text-dark" href="pricing.html"><h2>Pricing</h2></a>
+                
+            </nav> 
+        </ul>
+        <a class='btn' class='login' id='login-btn' href=""><h2>Login</h2></a> 
+        <a class='btn' class='btn' id='signout-btn' href=""><h2>Log Out</h2></a>
+        <a class='btn' class='btn' id='dashboard-btn'><a href='video-dashboard.html' href=""><h2>Dashboard</h2></a>
+        
+    </div>
+
+    <section class="gb-section">
+        <div class="container">
+            <div class="row gb-row">
+                <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12">
+                    <div class="container gb-container-1">
+                        <h1 class="display-4">Making the Internet a Better Place.<br></h1>
+                        <p class="lead">Using advanced artificial technology, Hater Blocker detects spam, hate speech and offensive comments in real time.</p>
+                        <a
+                        href="signup.html" class="btn btn-outline-secondary btn-lg btn-outline-success gb-btn">Get Started</a>
+                    </div>
+                            </div>
+                <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12">
+                    <i id="down" class="material-icons">keyboard_arrow_down</i>
+                </div>
+                <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12">
+                     <img id="phone" src="assets/Images/phone.png" alt="Card image cap" width="400px" height="400px">
+                </div>
+            </div>    
+        </div>
+    </section>
+        
+    <section>
+            <div class="row gb-row">
+                <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12"><p></p></div>
+                <div id="ho_w" class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12"><h1>How It Works</h1></div>
+                <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12"><p></p></div>
+            </div>    
+            
+        </section>
+        <div class="container gb-container-2">
+            <div class="row gb-row">
+                <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12">
+                    <div class="card"> <img src="https://lh3.google.com/u/0/d/1KPZ7476TgvFTD1dLQhxgryDAnrbqHZMy=w3839-h1436-iv1" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="text-center">Automatically flag negative comments<br></h4>
+                            <p class="card-text text-center">Negative comments are flagged and displayed in our sleek all-in-one dashboard for easy review.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12">
+                    <div class="card"> <img  src="https://lh3.google.com/u/0/d/1BHxaOt7IbvK-ggfhPG7YBTfde2Z81hPw=w3839-h1904-iv1" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="text-center">Monitor comments with all-in-one dashboard.<br></h4>
+                            <p class="card-text text-center">Negative comments are flagged and displayed in our sleek all-in-one dashboard for easy review.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12">
+                    <div class="card"> <img src="https://lh3.google.com/u/0/d/1WmR-xgiAF6PKXpLvbAo4XbbeawWZArLb=w3839-h1436-iv1" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="text-center">Delete unwanted comments with one click.<br></h4>
+                            <p class="card-text">Users can delete all flagged comments with the click of a button or remove comments individually.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="row gb-row">
+            <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12"><p></p></div>
+            <div id="ho_w" class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12"><h1>Benefits</h1></div>
+            <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12"><p></p></div>
+        </div>    
+        
+    </section>
+    <div class="container gb-container-2">
+        <div class="row gb-row">
+            <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12">
+                <div class="card"> <i class="material-icons">alarm</i>
+                    <div class="card-body">
+                        <h4 class="text-center">Save Time<br></h4>
+                        <p class="card-text text-center">Hater Blocker automatically detects and removes inappropriate comments, eliminating the need for manual moderation.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12">
+                <div class="card"> <i class="material-icons">monetization_on</i>
+                    <div class="card-body">
+                        <h4 class="text-center">Save Money.<br></h4>
+                        <p class="card-text text-center">Manual comment monitoring can be costly and inefficient -- Hater Blocker is an inexpensive alternative to hiring an in-house moderation team.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 gb-col-12">
+                <div class="card"> <i class="material-icons">vpn_lock</i>
+                    <div class="card-body">
+                        <h4 class="text-center">Protect your reputation.<br></h4>
+                        <p class="card-text">Protect your brand's integrity and reputation by monitoring negative comments before they escalate to a PR disaster.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        <div class="footercontainer">
+            <footer class="pt-4 my-md-5 pt-md-5 gb-border-top">
+                <div class="row">
+                    <div></div>
+                    <div
+                        class="col-6 col-md">
+                        
+                        
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Hater Blocker</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><h6>Made with <i class="material-icons">favorite</i> by:</h6></li>
+                        <li><h6>Brita Ramsay</h6></li>
+                        <li><h6>Leslie Hernandez</h6></li>
+                        <li><h6>Jose Pereira</h6></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                </div>
+        </div>
+        </footer>
+   
+    </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src=" https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+  <script src="assets/js/getcomments.js"></script>
+  <!-- <script src="assets/js/getcomments2.js"></script> -->
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-    <script src=" https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
-    <script src="assets/js/getcomments.js"></script>
-    <!-- <script src="assets/js/getcomments2.js"></script> -->
-
-
-    <script async defer src="https://apis.google.com/js/api.js"
-    onload="this.onload=function(){};handleClientLoad()"
-    onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+  <script async defer src="https://apis.google.com/js/api.js"
+  onload="this.onload=function(){};handleClientLoad()"
+  onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 </body>
+
 </html>
