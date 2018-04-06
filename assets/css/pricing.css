@@ -1,8 +1,8 @@
 @media (max-width: 20000px){
     @-webkit-keyframes greenPulse {
-        from { background-color:transparent; -webkit-box-shadow: 0 0 9px #333; }
-        50% { background-color: #def2f1; -webkit-box-shadow: 0 0 18px #3aafa9; }
-        to { background-color: transparent; -webkit-box-shadow: 0 0 9px #333; }
+        from {border-radius: 10px; background-color:transparent; -webkit-box-shadow: 0 0 9px #333; }
+        50% { border-radius: 10px; background-color: #def2f1; -webkit-box-shadow: 0 0 18px #3aafa9; }
+        to { border-radius: 10px; background-color: transparent; -webkit-box-shadow: 0 0 9px #333; }
       }
     #value{
         -webkit-animation-name: greenPulse;
