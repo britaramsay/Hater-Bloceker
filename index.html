@@ -25,18 +25,23 @@
     
     <script src="assets/js/index.js"></script>
     <link id="fSg_Droid-Sans" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-    <link id="fSg_Open-Sans" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic"> </head>
+    <link id="fSg_Open-Sans" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic"> 
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
+</head>
 
 
+<body class="landing">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+
             <a class="navbar-brand" href="index.html"><img src="assets/images/logo-image.png" style="width:200px;height:48px;"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form>
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                   <a class="nav-link" href="pricing.html">Pricing</a>
@@ -45,9 +50,13 @@
                   <a class="nav-link" href="contact.html">Contact</a>
                 </li>
               </ul>
-              <button type="button" class="btn btn-secondary btn-lg" id="login-btn">Login</button>
               </form>
+            <button type="button" class="btn btn-secondary btn-lg" id="login-btn">Login</button>
+            <button type="button" class="btn btn-secondary btn-lg" id="signout-btn">Sign Out</button>
+            <button type="button" class="btn btn-secondary btn-lg" id="dashboard-btn"><a href="VideoDashboard.html">Dashboard</a></button>
+              
             </div>
+            
           </nav>
           </div>
     
@@ -155,7 +164,7 @@
   onload="this.onload=function(){};handleClientLoad()"
   onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 </body>
-
+</html>
 
 
 
