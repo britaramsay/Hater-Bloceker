@@ -21,6 +21,7 @@ var deleteComments = 0;
 var currVideo;
 
 
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyB3fHaaUH8mhPVr0kDcwYxFKKSTqudXKjM",
@@ -83,6 +84,9 @@ function initClient() {
             getChannel();
         }
         else if ($('body').is('.dashboard-video')) {
+            // console.log(jcf);
+
+            
             // authorizeButton.onclick = handleAuthClick;
             signoutButton.onclick = handleSignoutClick;
             // Get current video id from local storage
@@ -95,6 +99,7 @@ function initClient() {
                 // Get comments on current video
                 getComments(currVideo);
             });
+           
            
            
         }
@@ -354,18 +359,19 @@ function getComment(commentId){
                         commenterImage.addClass('media-left')
                                     .html('<a href=' +  response.result.items[0].snippet.authorChannelUrl + '><img src=' + userImg + ' alt=""></a>');
                     
-                    var checkBox = $('<input>');
-                        checkBox.addClass('check-box')
-                            .attr('type', 'checkbox')
-                            .html('<br><span class="checkmark"></span>')
-                            .attr('comment', commentId);
-        
-                        commenterImage.append(checkBox);
                         listItem.append(commenterImage);
         
                     var mediaBody = $('<div>');
                         mediaBody.addClass('media-body')
                                 .attr('text', commentText);
+                    
+                    var checkBox = $('<input>');
+                    checkBox.addClass('check-box')
+                        .attr('type', 'checkbox')
+                        .html('<br><span class="checkmark"></span>')
+                        .attr('comment', commentId);
+
+    
         
                     var mediaHeading = $('<div>');
                         mediaHeading.addClass('media-heading')
@@ -374,7 +380,7 @@ function getComment(commentId){
                                     // Order comments by data send
                                     .append('<span class="timestamp"> '+datePosted+'</span>');
                                     
-                        mediaBody.append(mediaHeading)
+                        mediaBody.append(mediaHeading, checkBox)
                                 .append('<p class="comment-text">' + commentText + '</p>');
                     
                     var commentControls = $('<div>');
@@ -388,6 +394,12 @@ function getComment(commentId){
                     $('.comment-list').prepend(listItem);
                     // Call function to score this comments sentiment
                     initGapi(commentText, commentId);
+
+                    $('.comment-list').iCheck({
+                        checkboxClass: 'icheckbox_polaris',
+                        radioClass: 'iradio_polaris',
+                        increaseArea: '-10%' // optional
+                    });
         
                 }
             
@@ -426,7 +438,8 @@ function initGapi(content, id) {
             // Outline comment in red
             $(".media-body:contains(" + content + ")").css('border', '2px solid red');
             // Check this comments checkbox for delete
-            $('[comment="'+id+'"]').prop('checked',true);
+            $('[comment="'+id+'"]').iCheck('check');
+            // $('[comment="'+id+'"]').prop('checked',true);
         }
     }) 
 } 
