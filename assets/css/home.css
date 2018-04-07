@@ -1,7 +1,36 @@
 @media (max-width: 20000px){
+
+	.jumbotron {
+		background-color: #3aafa9;}
+
+
+	.header-text {
+		color: white; 
+		font-size: 60px;
+		font-family: 'Montserrat', sans-serif;
+	
+	}
+
+	.secondary-text {
+		color: white; 
+		font-size: 20px;
+		font-family: 'Raleway', sans-serif;
+	}
+
+
+
 	html {
 		font-size: 14px;
 	}
+	
+	
+	.footer-area {
+		background-color: #3aafa9;;
+		text-align: center;
+		color:white;
+
+	}
+	
 	.gb-section {
 		background-color: #3aafa9;
 		color: white;
@@ -87,11 +116,11 @@
 		color: white;
 
 	}
-	#phone{
-		position: relative;
-		right: 400px;
-		top: 1px;
-	}
+
+	@media (max-width: 767px) {
+		#phone {
+			display:none;
+		}
 	
 	#green{
 		color: #3aafa9;
@@ -106,18 +135,7 @@
 		text-align: center;
 		size: 40%;
 	}
-	.footercontainer{
-		background-color: rgb(32, 32, 32);
-		color: rgb(255, 255, 255);
-		margin-top: 60px;
-		height: 500px;
-		
-		background-size: cover;
-		background-position: left bottom;
-		align-content: center;
-		text-align: center;
-		
-	}
+
 }
 
 @media (max-width: 768px) {
