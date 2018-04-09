@@ -1,4 +1,7 @@
 # Hater-Blocker
+###Jose Pereira 
+###Brita Ramsay 
+###Leslie Hernandez
 
 #### NEGATIVE ONLINE COMMENTS DAMAGE A BRAND’S REPUTATION. 
 ###### Manually deleting negative YouTube comments is an ineffective, time-consuming and costly process.. We’re here to make that better.
